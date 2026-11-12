@@ -29,7 +29,7 @@ git push -u origin main
 
 ## 3. Подготовка Linux ВМ
 
-Пример рассчитан на Ubuntu/Debian и системного пользователя `gitlab-runner`. Установите `python3`, `curl`, `git` и GitLab Runner по [официальной инструкции](https://docs.gitlab.com/runner/install/linux-repository/). В GitLab откройте **Settings → CI/CD → Runners → Create project runner**, задайте тег `production-vm`, затем на ВМ зарегистрируйте runner по показанной GitLab команде с executor `shell`. При создании runner разрешите ему запускать задания основной ветки, если она защищена. После регистрации проверьте, что runner отображается как online. [Инструкция GitLab по регистрации](https://docs.gitlab.com/runner/register/).
+ВМ TVPO работает на CentOS. Установите `python3`, `curl`, `git` и GitLab Runner по [официальной инструкции для RPM-систем](https://docs.gitlab.com/runner/install/linux-repository/) с помощью `dnf`. Системный пользователь runner — `gitlab-runner`. В GitLab откройте **Settings → CI/CD → Runners → Create project runner**, задайте тег `production-vm`, затем на ВМ зарегистрируйте runner по показанной GitLab команде с executor `shell`. При создании runner разрешите ему запускать задания основной ветки, если она защищена. После регистрации проверьте, что runner отображается как online. [Инструкция GitLab по регистрации](https://docs.gitlab.com/runner/register/).
 
 На ВМ создайте папку и сервис. Файл `mortgage-calculator.service` из проекта скопируйте в `/etc/systemd/system/`:
 
@@ -70,3 +70,4 @@ curl http://127.0.0.1:8000/health
 - `.gitlab-ci.yml` — проверка и развёртывание после push;
 - `deploy.sh` — копирование кода, перезапуск сервиса и проверка;
 - `mortgage-calculator.service` — запуск приложения в Linux.
+
