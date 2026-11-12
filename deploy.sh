@@ -8,7 +8,7 @@ export XDG_RUNTIME_DIR="/run/user/$(id -u)"
 systemctl --user restart mortgage-calculator.service
 for attempt in 1 2 3 4 5; do
   if curl --fail --silent http://127.0.0.1:8000/health | grep -qx ok; then
-    echo "Развёртывание успешно: $(git rev-parse --short HEAD)"
+    echo "Развёртывание успешно: ${CI_COMMIT_SHORT_SHA:-ручной запуск}"
     exit 0
   fi
   sleep 1
