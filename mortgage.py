@@ -1,5 +1,7 @@
 """Расчёт аннуитетного ипотечного платежа без внешних зависимостей."""
 
+from __future__ import annotations
+
 from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 
 
@@ -29,3 +31,4 @@ def calculate(principal: str, annual_rate: str, years: str) -> dict[str, Decimal
     total = amount.quantize(money, rounding=ROUND_HALF_UP) if monthly_rate == 0 else (payment * months).quantize(money)
     return {"monthly_payment": payment, "total_payment": total,
             "overpayment": (total - amount).quantize(money), "months": months}
+
