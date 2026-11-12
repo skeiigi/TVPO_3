@@ -1,0 +1,14 @@
+[Unit]
+Description=Mortgage calculator for TVPO practical work 3
+After=network.target
+
+[Service]
+Type=simple
+User=gitlab-runner
+WorkingDirectory=/home/gitlab-runner/mortgage-calculator
+ExecStart=/usr/bin/python3 /home/gitlab-runner/mortgage-calculator/app.py
+Restart=on-failure
+Environment=PORT=8000
+
+[Install]
+WantedBy=multi-user.target

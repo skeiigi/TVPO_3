@@ -1,0 +1,18 @@
+stages:
+  - test
+  - deploy
+
+unit_tests:
+  stage: test
+  tags: [production-vm]
+  script:
+    - python3 -m unittest discover -s tests -v
+
+deploy_production:
+  stage: deploy
+  tags: [production-vm]
+  resource_group: production
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+  script:
+    - bash deploy.sh
