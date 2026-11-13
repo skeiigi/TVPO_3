@@ -1,0 +1,7 @@
+[Unit]
+Description=Deploy tested TVPO_3 commits from GitHub
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/gitlab-runner/github-deploy.sh

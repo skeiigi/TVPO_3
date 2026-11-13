@@ -1,0 +1,10 @@
+[Unit]
+Description=Check GitHub for tested TVPO_3 commits
+
+[Timer]
+OnBootSec=30s
+OnUnitActiveSec=60s
+Unit=tvpo3-deploy.service
+
+[Install]
+WantedBy=timers.target
